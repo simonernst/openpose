@@ -29,7 +29,7 @@ namespace op
                 mCameraParameterReader.readParameters(cameraParameterPath, serialNumbers);
             // Set video size
             if (mImageDirectoryStereo > 1)
-                set(CV_CAP_PROP_FRAME_WIDTH, get(CV_CAP_PROP_FRAME_WIDTH)/mImageDirectoryStereo);
+                set(cv::CAP_PROP_FRAME_WIDTH, get(cv::CAP_PROP_FRAME_WIDTH)/mImageDirectoryStereo);
                 // set(CV_CAP_PROP_FRAME_HEIGHT)
         }
         catch (const std::exception& e)
@@ -68,7 +68,7 @@ namespace op
     {
         try
         {
-            if (capProperty == CV_CAP_PROP_FRAME_WIDTH)
+            if (capProperty == cv::CAP_PROP_FRAME_WIDTH)
                 return VideoCaptureReader::get(capProperty) / mImageDirectoryStereo;
             else
                 return VideoCaptureReader::get(capProperty);
@@ -84,7 +84,7 @@ namespace op
     {
         try
         {
-            if (capProperty == CV_CAP_PROP_FRAME_WIDTH)
+            if (capProperty == cv::CAP_PROP_FRAME_WIDTH)
                 return VideoCaptureReader::set(capProperty, value * mImageDirectoryStereo);
             else
                 VideoCaptureReader::set(capProperty, value);

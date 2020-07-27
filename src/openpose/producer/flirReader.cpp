@@ -14,8 +14,8 @@ namespace op
             // Get resolution
             const auto resolution = mSpinnakerWrapper.getResolution();
             // Set resolution
-            set(CV_CAP_PROP_FRAME_WIDTH, resolution.x);
-            set(CV_CAP_PROP_FRAME_HEIGHT, resolution.y);
+            set(cv::CAP_PROP_FRAME_WIDTH, resolution.x);
+            set(cv::CAP_PROP_FRAME_HEIGHT, resolution.y);
         }
         catch (const std::exception& e)
         {
@@ -118,7 +118,7 @@ namespace op
     {
         try
         {
-            if (capProperty == CV_CAP_PROP_FRAME_WIDTH)
+            if (capProperty == cv::CAP_PROP_FRAME_WIDTH)
             {
                 if (Producer::get(ProducerProperty::Rotation) == 0.
                     || Producer::get(ProducerProperty::Rotation) == 180.)
@@ -126,7 +126,7 @@ namespace op
                 else
                     return mResolution.y;
             }
-            else if (capProperty == CV_CAP_PROP_FRAME_HEIGHT)
+            else if (capProperty == cv::CAP_PROP_FRAME_HEIGHT)
             {
                 if (Producer::get(ProducerProperty::Rotation) == 0.
                     || Producer::get(ProducerProperty::Rotation) == 180.)
@@ -134,11 +134,11 @@ namespace op
                 else
                     return mResolution.x;
             }
-            else if (capProperty == CV_CAP_PROP_POS_FRAMES)
+            else if (capProperty == cv::CAP_PROP_POS_FRAMES)
                 return (double)mFrameNameCounter;
-            else if (capProperty == CV_CAP_PROP_FRAME_COUNT)
+            else if (capProperty == cv::CAP_PROP_FRAME_COUNT)
                 return -1.;
-            else if (capProperty == CV_CAP_PROP_FPS)
+            else if (capProperty == cv::CAP_PROP_FPS)
                 return -1.;
             else
             {
@@ -157,13 +157,13 @@ namespace op
     {
         try
         {
-            if (capProperty == CV_CAP_PROP_FRAME_WIDTH)
+            if (capProperty == cv::CAP_PROP_FRAME_WIDTH)
                 mResolution.x = {(int)value};
-            else if (capProperty == CV_CAP_PROP_FRAME_HEIGHT)
+            else if (capProperty == cv::CAP_PROP_FRAME_HEIGHT)
                 mResolution.y = {(int)value};
-            else if (capProperty == CV_CAP_PROP_POS_FRAMES)
+            else if (capProperty == cv::CAP_PROP_POS_FRAMES)
                 log("This property is read-only.", Priority::Max, __LINE__, __FUNCTION__, __FILE__);
-            else if (capProperty == CV_CAP_PROP_FRAME_COUNT || capProperty == CV_CAP_PROP_FPS)
+            else if (capProperty == cv::CAP_PROP_FRAME_COUNT || capProperty == cv::CAP_PROP_FPS)
                 log("This property is read-only.", Priority::Max, __LINE__, __FUNCTION__, __FILE__);
             else
                 log("Unknown property.", Priority::Max, __LINE__, __FUNCTION__, __FILE__);

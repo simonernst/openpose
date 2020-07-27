@@ -75,7 +75,7 @@ cv::Mat cpuResize(cv::Mat& img, cv::Size newSize)
 int resizeTest()
 {
     // logging_level
-    cv::Mat img = op::loadImage(FLAGS_image_path, CV_LOAD_IMAGE_GRAYSCALE);
+    cv::Mat img = op::loadImage(FLAGS_image_path, cv::IMREAD_GRAYSCALE);
     if(img.empty())
         op::error("Could not open or find the image: " + FLAGS_image_path, __LINE__, __FUNCTION__, __FILE__);
     img.convertTo(img, CV_32FC1);
